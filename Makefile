@@ -228,7 +228,4 @@ ios-temp-prepare:
 	make ios-prepare
 	make build-ios-libs
 	flutter build ios-framework
-	cd ios
-	pod install
-	
-
+	cd ios && pod install

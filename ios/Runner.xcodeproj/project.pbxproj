@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -956,6 +956,7 @@
 				CURRENT_PROJECT_VERSION = "205072050520503$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = NV36ASU785;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited)";
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "k0sha VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -997,6 +998,7 @@
 			baseConfigurationReference = 45538701B067FE93BC9C0268 /* Pods-RunnerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2050720505205031;
 				DEVELOPMENT_TEAM = NV36ASU785;
@@ -1017,6 +1019,7 @@
 			baseConfigurationReference = 5614342048158781939DDF8C /* Pods-RunnerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2050720505205031;
 				DEVELOPMENT_TEAM = NV36ASU785;
@@ -1035,6 +1038,7 @@
 			baseConfigurationReference = 462099EAC34C5766FC648805 /* Pods-RunnerTests.profile.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2050720505205031;
 				DEVELOPMENT_TEAM = NV36ASU785;
@@ -1182,7 +1186,7 @@
 				CURRENT_PROJECT_VERSION = "205072050520503$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = NV36ASU785;
 				ENABLE_BITCODE = NO;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited)";
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "k0sha VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1231,6 +1235,7 @@
 				CURRENT_PROJECT_VERSION = "205072050520503$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = NV36ASU785;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited)";
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "k0sha VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";

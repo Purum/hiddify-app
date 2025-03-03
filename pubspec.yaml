@@ -1,7 +1,7 @@
 name: k0sha_vpn
 description: App for k0sha.org.
 publish_to: "none"
-version: 0.0.1+7
+version: 0.0.1+8
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
