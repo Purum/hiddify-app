@@ -5,10 +5,14 @@ import 'package:k0sha_vpn/core/localization/translations.dart';
 import 'package:k0sha_vpn/features/common/adaptive_root_scaffold.dart';
 import 'package:k0sha_vpn/features/connection/notifier/connection_notifier.dart';
 import 'package:k0sha_vpn/features/window/notifier/window_notifier.dart';
+import 'package:k0sha_vpn/features/window/widget/window_closing_dialog.dart';
 import 'package:k0sha_vpn/utils/custom_loggers.dart';
 import 'package:k0sha_vpn/utils/platform_utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
+
+import '../../../core/preferences/actions_at_closing.dart';
+import '../../../core/preferences/general_preferences.dart';
 
 class WindowWrapper extends StatefulHookConsumerWidget {
   const WindowWrapper(this.child, {super.key});
@@ -21,6 +25,8 @@ class WindowWrapper extends StatefulHookConsumerWidget {
 
 class _WindowWrapperState extends ConsumerState<WindowWrapper> with WindowListener, AppLogger {
   late AlertDialog closeDialog;
+
+  bool isWindowClosingDialogOpened = false;
 
   @override
   Widget build(BuildContext context) {
@@ -52,27 +58,23 @@ class _WindowWrapperState extends ConsumerState<WindowWrapper> with WindowListen
       await ref.read(windowNotifierProvider.notifier).close();
       return;
     }
-    final t = ref.watch(translationsProvider);
 
-    await showDialog(
-      context: RootScaffold.stateKey.currentContext!,
-      builder: (BuildContext context) => AlertDialog(
-        title: Text(t.window.alertMessage),
-        actions: [
-          TextButton(
-            onPressed: () async => await ref.read(windowNotifierProvider.notifier).quit(),
-            child: Text(t.window.close.toUpperCase()),
-          ),
-          TextButton(
-            onPressed: () async {
-              Navigator.of(context).maybePop(false);
-              await ref.read(windowNotifierProvider.notifier).close();
-            },
-            child: Text(t.window.hide.toUpperCase()),
-          ),
-        ],
-      ),
-    );
+    switch (ref.read(Preferences.actionAtClose)) {
+      case ActionsAtClosing.ask:
+        if (isWindowClosingDialogOpened) return;
+        isWindowClosingDialogOpened = true;
+        await showDialog(
+          context: RootScaffold.stateKey.currentContext!,
+          builder: (BuildContext context) => const WindowClosingDialog(),
+        );
+        isWindowClosingDialogOpened = false;
+
+      case ActionsAtClosing.hide:
+        await ref.read(windowNotifierProvider.notifier).close();
+
+      case ActionsAtClosing.exit:
+        await ref.read(windowNotifierProvider.notifier).quit();
+    }
   }
 
   @override

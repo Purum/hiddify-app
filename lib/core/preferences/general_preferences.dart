@@ -8,6 +8,8 @@ import 'package:k0sha_vpn/features/per_app_proxy/model/per_app_proxy_mode.dart';
 import 'package:k0sha_vpn/utils/platform_utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'actions_at_closing.dart';
+
 part 'general_preferences.g.dart';
 
 bool _debugIntroPage = false;
@@ -17,6 +19,11 @@ abstract class Preferences {
     "intro_completed",
     false,
     overrideValue: _debugIntroPage && kDebugMode ? false : null,
+  );
+
+  static final proMode = PreferencesNotifier.create(
+    'pro_mode',
+    false,
   );
 
   static final silentStart = PreferencesNotifier.create<bool, bool>(
@@ -60,6 +67,13 @@ abstract class Preferences {
   static final storeReviewedByUser = PreferencesNotifier.create<bool, bool>(
     "store_reviewed_by_user",
     false,
+  );
+
+  static final actionAtClose = PreferencesNotifier.create<ActionsAtClosing, String>(
+    "action_at_close",
+    ActionsAtClosing.ask,
+    mapFrom: ActionsAtClosing.values.byName,
+    mapTo: (value) => value.name,
   );
 }
 

@@ -79,23 +79,6 @@ class AboutPage extends HookConsumerWidget {
         slivers: [
           NestedAppBar(
             title: Text(t.about.pageTitle),
-            actions: [
-              PopupMenuButton(
-                icon: Icon(AdaptiveIcon(context).more),
-                itemBuilder: (context) {
-                  return [
-                    PopupMenuItem(
-                      child: Text(t.general.addToClipboard),
-                      onTap: () {
-                        Clipboard.setData(
-                          ClipboardData(text: appInfo.format()),
-                        );
-                      },
-                    ),
-                  ];
-                },
-              ),
-            ],
           ),
           SliverToBoxAdapter(
             child: Padding(
@@ -103,7 +86,7 @@ class AboutPage extends HookConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Assets.images.logo.svg(width: 64, height: 64),
+                  Assets.images.icons.vPNLogo60px.image(),
                   const Gap(16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,29 +111,11 @@ class AboutPage extends HookConsumerWidget {
                 ...conditionalTiles,
                 if (conditionalTiles.isNotEmpty) const Divider(),
                 ListTile(
-                  title: Text(t.about.sourceCode),
-                  trailing: const Icon(FluentIcons.open_24_regular),
-                  onTap: () async {
-                    await UriUtils.tryLaunch(
-                      Uri.parse(Constants.githubUrl),
-                    );
-                  },
-                ),
-                ListTile(
                   title: Text(t.about.telegramChannel),
                   trailing: const Icon(FluentIcons.open_24_regular),
                   onTap: () async {
                     await UriUtils.tryLaunch(
                       Uri.parse(Constants.telegramChannelUrl),
-                    );
-                  },
-                ),
-                ListTile(
-                  title: Text(t.about.termsAndConditions),
-                  trailing: const Icon(FluentIcons.open_24_regular),
-                  onTap: () async {
-                    await UriUtils.tryLaunch(
-                      Uri.parse(Constants.termsAndConditionsUrl),
                     );
                   },
                 ),

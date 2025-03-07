@@ -6,10 +6,10 @@ import 'package:k0sha_vpn/features/common/adaptive_root_scaffold.dart';
 import 'package:k0sha_vpn/utils/utils.dart';
 
 bool showDrawerButton(BuildContext context) {
-  if (!useMobileRouter) return true;
-  final String location = GoRouterState.of(context).uri.path;
-  if (location == const HomeRoute().location || location == const ProfilesOverviewRoute().location) return true;
-  if (location.startsWith(const ProxiesRoute().location)) return true;
+  // if (!useMobileRouter) return true;
+  // final String location = GoRouterState.of(context).uri.path;
+  // if (location == const HomeRoute().location || location == const ProfilesOverviewRoute().location) return true;
+  // if (location.startsWith(const ProxiesRoute().location)) return true;
   return false;
 }
 
@@ -40,13 +40,15 @@ class NestedAppBar extends StatelessWidget {
                 RootScaffold.stateKey.currentState?.openDrawer();
               },
             )
-          : IconButton(
-              icon: Icon(context.isRtl ? Icons.arrow_forward : Icons.arrow_back),
-              padding: EdgeInsets.only(right: context.isRtl ? 50 : 0),
-              onPressed: () {
-                Navigator.of(context).pop(); // Pops the current route off the navigator stack
-              },
-            ),
+          : (Navigator.of(context).canPop()
+              ? IconButton(
+                  icon: Icon(context.isRtl ? Icons.arrow_forward : Icons.arrow_back),
+                  padding: EdgeInsets.only(right: context.isRtl ? 50 : 0),
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Pops the current route off the navigator stack
+                  },
+                )
+              : null),
       title: title,
       actions: actions,
       pinned: pinned,

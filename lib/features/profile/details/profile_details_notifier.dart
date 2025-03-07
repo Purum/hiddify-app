@@ -11,6 +11,8 @@ import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../core/model/constants.dart';
+
 part 'profile_details_notifier.g.dart';
 
 @riverpod
@@ -26,7 +28,7 @@ class ProfileDetailsNotifier extends _$ProfileDetailsNotifier with AppLogger {
         profile: RemoteProfileEntity(
           id: const Uuid().v4(),
           active: true,
-          name: profileName ?? "",
+          name: profileName ?? Constants.appName,
           url: url ?? "",
           lastUpdate: DateTime.now(),
         ),

@@ -17,6 +17,8 @@ import 'package:k0sha_vpn/features/settings/about/about_page.dart';
 import 'package:k0sha_vpn/features/settings/overview/settings_overview_page.dart';
 import 'package:k0sha_vpn/utils/utils.dart';
 
+import '../../features/subscription/widget/subscription_page.dart';
+
 part 'routes.g.dart';
 
 GlobalKey<NavigatorState>? _dynamicRootKey = useMobileRouter ? rootNavigatorKey : null;
@@ -74,6 +76,10 @@ GlobalKey<NavigatorState>? _dynamicRootKey = useMobileRouter ? rootNavigatorKey 
     TypedGoRoute<ProxiesRoute>(
       path: "/proxies",
       name: ProxiesRoute.name,
+    ),
+    TypedGoRoute<SubscriptionRoute>(
+      path: "/sub/:hash",
+      name: SubscriptionRoute.name,
     ),
   ],
 )
@@ -135,6 +141,10 @@ class MobileWrapperRoute extends ShellRouteData {
       path: "/about",
       name: AboutRoute.name,
     ),
+    TypedGoRoute<SubscriptionRoute>(
+      path: "/sub/:hash",
+      name: SubscriptionRoute.name,
+    ),
   ],
 )
 class DesktopWrapperRoute extends ShellRouteData {
@@ -183,6 +193,25 @@ class ProxiesRoute extends GoRouteData {
     return const NoTransitionPage(
       name: name,
       child: ProxiesOverviewPage(),
+    );
+  }
+}
+
+class SubscriptionRoute extends GoRouteData {
+  const SubscriptionRoute({
+    required this.hash,
+  });
+
+  final String hash;
+
+  static const name = "Subscription";
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    final url = state.uri.toString();
+    return NoTransitionPage(
+      name: name,
+      child: SubscriptionPage(url: url),
     );
   }
 }

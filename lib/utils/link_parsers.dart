@@ -60,6 +60,8 @@ abstract class LinkParser {
         'ssh' => fragment ?? ProxyType.ssh.label,
         'wg' => fragment ?? ProxyType.wireguard.label,
         'warp' => fragment ?? ProxyType.warp.label,
+        'http' => fragment ?? ProxyType.http.label,
+        'https' => fragment ?? ProxyType.http.label,
         _ => null,
       };
     }

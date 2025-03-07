@@ -258,8 +258,14 @@ release: # Create a new tag for release.
 
 ios-temp-prepare: 
 	make ios-prepare
+	make build-ios-libs
 	flutter build ios-framework
-	cd ios
-	pod install
-	
+	cd ios && pod install
+
+
+rebuild-ios:
+	rm -rf ios/Pods
+	rm -f ios/Podfile.lock
+	flutter clean
+	flutter pub get
 

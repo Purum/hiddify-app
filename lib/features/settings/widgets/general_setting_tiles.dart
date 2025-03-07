@@ -12,6 +12,8 @@ import 'package:k0sha_vpn/features/common/general_pref_tiles.dart';
 import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../core/router/routes.dart';
+
 class GeneralSettingTiles extends HookConsumerWidget {
   const GeneralSettingTiles({super.key});
 
@@ -19,81 +21,64 @@ class GeneralSettingTiles extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final t = ref.watch(translationsProvider);
 
-    final themeMode = ref.watch(themePreferencesProvider);
+    final isPro = ref.watch(Preferences.proMode);
 
     return Column(
       children: [
         const LocalePrefTile(),
+        const ThemeModePrefTile(),
         ListTile(
-          title: Text(t.settings.general.themeMode),
-          subtitle: Text(themeMode.present(t)),
-          leading: const Icon(FluentIcons.weather_moon_20_regular),
-          onTap: () async {
-            final selectedThemeMode = await showDialog<AppThemeMode>(
-              context: context,
-              builder: (context) {
-                return SimpleDialog(
-                  title: Text(t.settings.general.themeMode),
-                  children: AppThemeMode.values
-                      .map(
-                        (e) => RadioListTile(
-                          title: Text(e.present(t)),
-                          value: e,
-                          groupValue: themeMode,
-                          onChanged: Navigator.of(context).maybePop,
-                        ),
-                      )
-                      .toList(),
-                );
-              },
-            );
-            if (selectedThemeMode != null) {
-              await ref.read(themePreferencesProvider.notifier).changeThemeMode(selectedThemeMode);
-            }
+          title: Text(t.about.pageTitle),
+          leading: const Icon(FluentIcons.info_20_regular),
+          onTap: () {
+            const AboutRoute().push(context);
           },
         ),
-        const EnableAnalyticsPrefTile(),
-        SwitchListTile(
-          title: Text(t.settings.general.autoIpCheck),
-          secondary: const Icon(FluentIcons.globe_search_24_regular),
-          value: ref.watch(Preferences.autoCheckIp),
-          onChanged: ref.read(Preferences.autoCheckIp.notifier).update,
-        ),
-        if (Platform.isAndroid) ...[
+        if (isPro) ...[
+          const EnableAnalyticsPrefTile(),
           SwitchListTile(
-            title: Text(t.settings.general.dynamicNotification),
-            secondary: const Icon(FluentIcons.top_speed_24_regular),
-            value: ref.watch(Preferences.dynamicNotification),
-            onChanged: (value) async {
-              await ref.read(Preferences.dynamicNotification.notifier).update(value);
-            },
+            title: Text(t.settings.general.autoIpCheck),
+            secondary: const Icon(FluentIcons.globe_search_24_regular),
+            value: ref.watch(Preferences.autoCheckIp),
+            onChanged: ref.read(Preferences.autoCheckIp.notifier).update,
           ),
-          SwitchListTile(
-            title: Text(t.settings.general.hapticFeedback),
-            secondary: const Icon(FluentIcons.phone_vibrate_24_regular),
-            value: ref.watch(hapticServiceProvider),
-            onChanged: ref.read(hapticServiceProvider.notifier).updatePreference,
-          ),
-        ],
-        if (PlatformUtils.isDesktop) ...[
-          SwitchListTile(
-            title: Text(t.settings.general.autoStart),
-            value: ref.watch(autoStartNotifierProvider).asData!.value,
-            onChanged: (value) async {
-              if (value) {
-                await ref.read(autoStartNotifierProvider.notifier).enable();
-              } else {
-                await ref.read(autoStartNotifierProvider.notifier).disable();
-              }
-            },
-          ),
-          SwitchListTile(
-            title: Text(t.settings.general.silentStart),
-            value: ref.watch(Preferences.silentStart),
-            onChanged: (value) async {
-              await ref.read(Preferences.silentStart.notifier).update(value);
-            },
-          ),
+          if (Platform.isAndroid) ...[
+            SwitchListTile(
+              title: Text(t.settings.general.dynamicNotification),
+              secondary: const Icon(FluentIcons.top_speed_24_regular),
+              value: ref.watch(Preferences.dynamicNotification),
+              onChanged: (value) async {
+                await ref.read(Preferences.dynamicNotification.notifier).update(value);
+              },
+            ),
+            SwitchListTile(
+              title: Text(t.settings.general.hapticFeedback),
+              secondary: const Icon(FluentIcons.phone_vibrate_24_regular),
+              value: ref.watch(hapticServiceProvider),
+              onChanged: ref.read(hapticServiceProvider.notifier).updatePreference,
+            ),
+          ],
+          if (PlatformUtils.isDesktop) ...[
+            const ClosingPrefTile(),
+            SwitchListTile(
+              title: Text(t.settings.general.autoStart),
+              value: ref.watch(autoStartNotifierProvider).asData!.value,
+              onChanged: (value) async {
+                if (value) {
+                  await ref.read(autoStartNotifierProvider.notifier).enable();
+                } else {
+                  await ref.read(autoStartNotifierProvider.notifier).disable();
+                }
+              },
+            ),
+            SwitchListTile(
+              title: Text(t.settings.general.silentStart),
+              value: ref.watch(Preferences.silentStart),
+              onChanged: (value) async {
+                await ref.read(Preferences.silentStart.notifier).update(value);
+              },
+            ),
+          ],
         ],
       ],
     );

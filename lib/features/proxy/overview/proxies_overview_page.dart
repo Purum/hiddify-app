@@ -25,7 +25,9 @@ class ProxiesOverviewPage extends HookConsumerWidget with PresLogger {
     );
 
     final appBar = NestedAppBar(
-      title: Text(t.proxies.pageTitle),
+      title: Center(
+        child: Text(t.proxies.pageTitle),
+      ),
       actions: [
         PopupMenuButton<ProxiesSort>(
           initialValue: sortBy,

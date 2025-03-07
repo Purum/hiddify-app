@@ -33,10 +33,33 @@ class IntroPage extends HookConsumerWidget with PresLogger {
       locationInfoLoaded = true;
     }
 
+    Future<void> onPressed() async {
+      if (isStarting.value) return;
+      isStarting.value = true;
+      if (!ref.read(analyticsControllerProvider).requireValue) {
+        loggy.info("disabling analytics per user request");
+        try {
+          await ref.read(analyticsControllerProvider.notifier).disableAnalytics();
+        } catch (error, stackTrace) {
+          loggy.error(
+            "could not disable analytics",
+            error,
+            stackTrace,
+          );
+        }
+      }
+      await ref.read(Preferences.introCompleted.notifier).update(true);
+    }
+
+    useEffect(() {
+      onPressed();
+      return null;
+    }, []);
+
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
-          shrinkWrap: true,
+          shrinkWrap: false,
           slivers: [
             SliverToBoxAdapter(
               child: SizedBox(
@@ -44,7 +67,7 @@ class IntroPage extends HookConsumerWidget with PresLogger {
                 height: 224,
                 child: Padding(
                   padding: const EdgeInsets.all(24),
-                  child: Assets.images.logo.svg(),
+                  child: Assets.images.icons.vPNLogo120px2x.image(),
                 ),
               ),
             ),
@@ -56,49 +79,13 @@ class IntroPage extends HookConsumerWidget with PresLogger {
                   const SliverGap(4),
                   const RegionPrefTile(),
                   const SliverGap(4),
-                  const EnableAnalyticsPrefTile(),
-                  const SliverGap(4),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text.rich(
-                      t.intro.termsAndPolicyCaution(
-                        tap: (text) => TextSpan(
-                          text: text,
-                          style: const TextStyle(color: Colors.blue),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () async {
-                              await UriUtils.tryLaunch(
-                                Uri.parse(Constants.termsAndConditionsUrl),
-                              );
-                            },
-                        ),
-                      ),
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
                       vertical: 24,
                     ),
                     child: FilledButton(
-                      onPressed: () async {
-                        if (isStarting.value) return;
-                        isStarting.value = true;
-                        if (!ref.read(analyticsControllerProvider).requireValue) {
-                          loggy.info("disabling analytics per user request");
-                          try {
-                            await ref.read(analyticsControllerProvider.notifier).disableAnalytics();
-                          } catch (error, stackTrace) {
-                            loggy.error(
-                              "could not disable analytics",
-                              error,
-                              stackTrace,
-                            );
-                          }
-                        }
-                        await ref.read(Preferences.introCompleted.notifier).update(true);
-                      },
+                      onPressed: onPressed,
                       child: isStarting.value
                           ? LinearProgressIndicator(
                               backgroundColor: Colors.transparent,
@@ -119,7 +106,7 @@ class IntroPage extends HookConsumerWidget with PresLogger {
   Future<void> autoSelectRegion(WidgetRef ref) async {
     try {
       final countryCode = await TimeZoneToCountry.getLocalCountryCode();
-      final regionLocale = _getRegionLocale(countryCode);
+      final regionLocale = _getRegionLocale('RU');
       loggy.debug(
         'Timezone Region: ${regionLocale.region} Locale: ${regionLocale.locale}',
       );

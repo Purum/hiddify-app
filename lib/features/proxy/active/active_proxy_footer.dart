@@ -27,7 +27,7 @@ class ActiveProxyFooter extends HookConsumerWidget {
       visible: activeProxy is AsyncData,
       child: switch (activeProxy) {
         AsyncData(value: final proxy) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

@@ -23,16 +23,21 @@ class AdvancedSettingTiles extends HookConsumerWidget {
 
     return Column(
       children: [
-        // const RegionPrefTile(),
-        // ListTile(
-        //   title: Text(t.settings.geoAssets.pageTitle),
-        //   leading: const Icon(
-        //     FluentIcons.arrow_routing_rectangle_multiple_24_regular,
-        //   ),
-        //   onTap: () async {
-        //     // await const GeoAssetsRoute().push(context);
-        //   },
-        // ),
+        ListTile(
+          title: Text(t.config.pageTitle),
+          leading: const Icon(FluentIcons.box_edit_20_regular),
+          onTap: () {
+            const ConfigOptionsRoute().push(context);
+          },
+        ),
+        ListTile(
+          title: Text(t.logs.pageTitle),
+          leading: const Icon(FluentIcons.document_text_20_regular),
+          onTap: () {
+            const LogsOverviewRoute().push(context);
+          },
+        ),
+
         if (Platform.isAndroid) ...[
           ListTile(
             title: Text(t.settings.network.perAppProxyPageTitle),

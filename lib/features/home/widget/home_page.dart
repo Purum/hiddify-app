@@ -17,6 +17,8 @@ import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
+import '../../../core/model/constants.dart';
+
 class HomePage extends HookConsumerWidget {
   const HomePage({super.key});
 
@@ -33,27 +35,17 @@ class HomePage extends HookConsumerWidget {
           CustomScrollView(
             slivers: [
               NestedAppBar(
-                title: Text.rich(
+                title: const Text.rich(
                   TextSpan(
                     children: [
-                      TextSpan(text: t.general.appTitle),
-                      const TextSpan(text: " "),
-                      const WidgetSpan(
-                        child: AppVersionLabel(),
-                        alignment: PlaceholderAlignment.middle,
-                      ),
+                      TextSpan(text: Constants.appName),
                     ],
                   ),
                 ),
                 actions: [
                   IconButton(
-                    onPressed: () => const QuickSettingsRoute().push(context),
-                    icon: const Icon(FluentIcons.options_24_filled),
-                    tooltip: t.config.quickSettings,
-                  ),
-                  IconButton(
-                    onPressed: () => const AddProfileRoute().push(context),
-                    icon: const Icon(FluentIcons.add_circle_24_filled),
+                    onPressed: () => const SettingsRoute().push(context),
+                    icon: const Icon(FluentIcons.settings_24_regular),
                     tooltip: t.profile.add.buttonText,
                   ),
                 ],
@@ -61,14 +53,14 @@ class HomePage extends HookConsumerWidget {
               switch (activeProfile) {
                 AsyncData(value: final profile?) => MultiSliver(
                     children: [
-                      ProfileTile(profile: profile, isMain: true),
+                      // ProfileTile(profile: profile, isMain: true),
                       SliverFillRemaining(
                         hasScrollBody: false,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Stack(
                           children: [
-                            const Expanded(
-                              child: Column(
+                            Container(
+                              constraints: const BoxConstraints.expand(),
+                              child: const Column(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -93,41 +85,6 @@ class HomePage extends HookConsumerWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-class AppVersionLabel extends HookConsumerWidget {
-  const AppVersionLabel({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final t = ref.watch(translationsProvider);
-    final theme = Theme.of(context);
-
-    final version = ref.watch(appInfoProvider).requireValue.presentVersion;
-    if (version.isBlank) return const SizedBox();
-
-    return Semantics(
-      label: t.about.version,
-      button: false,
-      child: Container(
-        decoration: BoxDecoration(
-          color: theme.colorScheme.secondaryContainer,
-          borderRadius: BorderRadius.circular(4),
-        ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 4,
-          vertical: 1,
-        ),
-        child: Text(
-          version,
-          textDirection: TextDirection.ltr,
-          style: theme.textTheme.bodySmall?.copyWith(
-            color: theme.colorScheme.onSecondaryContainer,
-          ),
-        ),
       ),
     );
   }
