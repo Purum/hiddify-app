@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:dartx/dartx.dart';
-import 'package:hiddify/features/profile/data/profile_parser.dart';
-import 'package:hiddify/features/profile/data/profile_repository.dart';
-import 'package:hiddify/singbox/model/singbox_proxy_type.dart';
-import 'package:hiddify/utils/validators.dart';
+import 'package:k0sha_vpn/features/profile/data/profile_parser.dart';
+import 'package:k0sha_vpn/features/profile/data/profile_repository.dart';
+import 'package:k0sha_vpn/singbox/model/singbox_proxy_type.dart';
+import 'package:k0sha_vpn/utils/validators.dart';
 
 typedef ProfileLink = ({String url, String name});
 

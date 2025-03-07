@@ -1,9 +1,9 @@
 import 'package:dartx/dartx.dart';
-import 'package:hiddify/core/preferences/general_preferences.dart';
-import 'package:hiddify/core/preferences/preferences_provider.dart';
-import 'package:hiddify/features/profile/data/profile_data_providers.dart';
-import 'package:hiddify/features/profile/model/profile_entity.dart';
-import 'package:hiddify/utils/custom_loggers.dart';
+import 'package:k0sha_vpn/core/preferences/general_preferences.dart';
+import 'package:k0sha_vpn/core/preferences/preferences_provider.dart';
+import 'package:k0sha_vpn/features/profile/data/profile_data_providers.dart';
+import 'package:k0sha_vpn/features/profile/model/profile_entity.dart';
+import 'package:k0sha_vpn/utils/custom_loggers.dart';
 import 'package:meta/meta.dart';
 import 'package:neat_periodic_task/neat_periodic_task.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

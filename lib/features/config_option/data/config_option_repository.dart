@@ -1,19 +1,19 @@
 import 'package:dartx/dartx.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:hiddify/core/model/optional_range.dart';
-import 'package:hiddify/core/model/region.dart';
-import 'package:hiddify/core/preferences/general_preferences.dart';
+import 'package:k0sha_vpn/core/model/optional_range.dart';
+import 'package:k0sha_vpn/core/model/region.dart';
+import 'package:k0sha_vpn/core/preferences/general_preferences.dart';
 
-import 'package:hiddify/core/utils/exception_handler.dart';
-import 'package:hiddify/core/utils/json_converters.dart';
-import 'package:hiddify/core/utils/preferences_utils.dart';
-import 'package:hiddify/features/config_option/model/config_option_failure.dart';
+import 'package:k0sha_vpn/core/utils/exception_handler.dart';
+import 'package:k0sha_vpn/core/utils/json_converters.dart';
+import 'package:k0sha_vpn/core/utils/preferences_utils.dart';
+import 'package:k0sha_vpn/features/config_option/model/config_option_failure.dart';
 
-import 'package:hiddify/features/log/model/log_level.dart';
-import 'package:hiddify/singbox/model/singbox_config_enum.dart';
-import 'package:hiddify/singbox/model/singbox_config_option.dart';
-import 'package:hiddify/singbox/model/singbox_rule.dart';
-import 'package:hiddify/utils/utils.dart';
+import 'package:k0sha_vpn/features/log/model/log_level.dart';
+import 'package:k0sha_vpn/singbox/model/singbox_config_enum.dart';
+import 'package:k0sha_vpn/singbox/model/singbox_config_option.dart';
+import 'package:k0sha_vpn/singbox/model/singbox_rule.dart';
+import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

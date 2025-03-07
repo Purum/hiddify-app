@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:hiddify/features/log/data/log_data_providers.dart';
-import 'package:hiddify/features/log/model/log_entity.dart';
-import 'package:hiddify/features/log/model/log_level.dart';
-import 'package:hiddify/features/log/overview/logs_overview_state.dart';
-import 'package:hiddify/utils/riverpod_utils.dart';
-import 'package:hiddify/utils/utils.dart';
+import 'package:k0sha_vpn/features/log/data/log_data_providers.dart';
+import 'package:k0sha_vpn/features/log/model/log_entity.dart';
+import 'package:k0sha_vpn/features/log/model/log_level.dart';
+import 'package:k0sha_vpn/features/log/overview/logs_overview_state.dart';
+import 'package:k0sha_vpn/utils/riverpod_utils.dart';
+import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 

@@ -1,7 +1,7 @@
 package com.hiddify.hiddify.constant
 
 object Action {
-    const val SERVICE = "com.hiddify.app.SERVICE"
-    const val SERVICE_CLOSE = "com.hiddify.app.SERVICE_CLOSE"
-    const val SERVICE_RELOAD = "com.hiddify.app.sfa.SERVICE_RELOAD"
+    const val SERVICE = "com.k0sha.vpn-service.SERVICE"
+    const val SERVICE_CLOSE = "com.k0sha.vpn-service.SERVICE_CLOSE"
+    const val SERVICE_RELOAD = "com.k0sha.vpn-service.sfa.SERVICE_RELOAD"
 }

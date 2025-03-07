@@ -1,5 +1,5 @@
-import 'package:hiddify/core/preferences/preferences_provider.dart';
-import 'package:hiddify/features/config_option/data/config_option_repository.dart';
+import 'package:k0sha_vpn/core/preferences/preferences_provider.dart';
+import 'package:k0sha_vpn/features/config_option/data/config_option_repository.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

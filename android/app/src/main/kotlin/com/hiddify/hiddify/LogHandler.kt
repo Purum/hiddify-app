@@ -9,7 +9,7 @@ class LogHandler : FlutterPlugin {
 
     companion object {
         const val TAG = "A/LogHandler"
-        const val SERVICE_LOGS = "com.hiddify.app/service.logs"
+        const val SERVICE_LOGS = "com.k0sha.vpn-service/service.logs"
     }
 
     private lateinit var logsChannel: EventChannel

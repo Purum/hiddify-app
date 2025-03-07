@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hiddify/features/proxy/model/proxy_entity.dart';
-import 'package:hiddify/gen/fonts.gen.dart';
-import 'package:hiddify/utils/custom_loggers.dart';
+import 'package:k0sha_vpn/features/proxy/model/proxy_entity.dart';
+import 'package:k0sha_vpn/gen/fonts.gen.dart';
+import 'package:k0sha_vpn/utils/custom_loggers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProxyTile extends HookConsumerWidget with PresLogger {

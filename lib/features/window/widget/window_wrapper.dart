@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:hiddify/core/localization/translations.dart';
-import 'package:hiddify/features/common/adaptive_root_scaffold.dart';
-import 'package:hiddify/features/connection/notifier/connection_notifier.dart';
-import 'package:hiddify/features/window/notifier/window_notifier.dart';
-import 'package:hiddify/utils/custom_loggers.dart';
-import 'package:hiddify/utils/platform_utils.dart';
+import 'package:k0sha_vpn/core/localization/translations.dart';
+import 'package:k0sha_vpn/features/common/adaptive_root_scaffold.dart';
+import 'package:k0sha_vpn/features/connection/notifier/connection_notifier.dart';
+import 'package:k0sha_vpn/features/window/notifier/window_notifier.dart';
+import 'package:k0sha_vpn/utils/custom_loggers.dart';
+import 'package:k0sha_vpn/utils/platform_utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
 

@@ -3,18 +3,18 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:hiddify/core/model/directories.dart';
-import 'package:hiddify/singbox/model/singbox_config_option.dart';
-import 'package:hiddify/singbox/model/singbox_outbound.dart';
-import 'package:hiddify/singbox/model/singbox_stats.dart';
-import 'package:hiddify/singbox/model/singbox_status.dart';
-import 'package:hiddify/singbox/model/warp_account.dart';
-import 'package:hiddify/singbox/service/singbox_service.dart';
-import 'package:hiddify/utils/custom_loggers.dart';
+import 'package:k0sha_vpn/core/model/directories.dart';
+import 'package:k0sha_vpn/singbox/model/singbox_config_option.dart';
+import 'package:k0sha_vpn/singbox/model/singbox_outbound.dart';
+import 'package:k0sha_vpn/singbox/model/singbox_stats.dart';
+import 'package:k0sha_vpn/singbox/model/singbox_status.dart';
+import 'package:k0sha_vpn/singbox/model/warp_account.dart';
+import 'package:k0sha_vpn/singbox/service/singbox_service.dart';
+import 'package:k0sha_vpn/utils/custom_loggers.dart';
 import 'package:rxdart/rxdart.dart';
 
 class PlatformSingboxService with InfraLogger implements SingboxService {
-  static const channelPrefix = "com.hiddify.app";
+  static const channelPrefix = "com.k0sha.vpn-service";
 
   static const methodChannel = MethodChannel("$channelPrefix/method");
   static const statusChannel = EventChannel("$channelPrefix/service.status", JSONMethodCodec());

@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hiddify/core/preferences/general_preferences.dart';
-import 'package:hiddify/core/router/routes.dart';
-import 'package:hiddify/features/deep_link/notifier/deep_link_notifier.dart';
-import 'package:hiddify/utils/utils.dart';
+import 'package:k0sha_vpn/core/preferences/general_preferences.dart';
+import 'package:k0sha_vpn/core/router/routes.dart';
+import 'package:k0sha_vpn/features/deep_link/notifier/deep_link_notifier.dart';
+import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 

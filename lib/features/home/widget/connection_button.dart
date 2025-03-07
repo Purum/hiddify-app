@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
-import 'package:hiddify/core/localization/translations.dart';
-import 'package:hiddify/core/model/failures.dart';
-import 'package:hiddify/core/theme/theme_extensions.dart';
-import 'package:hiddify/core/widget/animated_text.dart';
-import 'package:hiddify/features/config_option/data/config_option_repository.dart';
-import 'package:hiddify/features/config_option/notifier/config_option_notifier.dart';
-import 'package:hiddify/features/connection/model/connection_status.dart';
-import 'package:hiddify/features/connection/notifier/connection_notifier.dart';
-import 'package:hiddify/features/connection/widget/experimental_feature_notice.dart';
-import 'package:hiddify/features/profile/notifier/active_profile_notifier.dart';
-import 'package:hiddify/features/proxy/active/active_proxy_notifier.dart';
-import 'package:hiddify/gen/assets.gen.dart';
-import 'package:hiddify/utils/alerts.dart';
+import 'package:k0sha_vpn/core/localization/translations.dart';
+import 'package:k0sha_vpn/core/model/failures.dart';
+import 'package:k0sha_vpn/core/theme/theme_extensions.dart';
+import 'package:k0sha_vpn/core/widget/animated_text.dart';
+import 'package:k0sha_vpn/features/config_option/data/config_option_repository.dart';
+import 'package:k0sha_vpn/features/config_option/notifier/config_option_notifier.dart';
+import 'package:k0sha_vpn/features/connection/model/connection_status.dart';
+import 'package:k0sha_vpn/features/connection/notifier/connection_notifier.dart';
+import 'package:k0sha_vpn/features/connection/widget/experimental_feature_notice.dart';
+import 'package:k0sha_vpn/features/profile/notifier/active_profile_notifier.dart';
+import 'package:k0sha_vpn/features/proxy/active/active_proxy_notifier.dart';
+import 'package:k0sha_vpn/gen/assets.gen.dart';
+import 'package:k0sha_vpn/utils/alerts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // TODO: rewrite

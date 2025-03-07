@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:dartx/dartx.dart';
-import 'package:hiddify/features/profile/model/profile_entity.dart';
-import 'package:hiddify/utils/utils.dart';
+import 'package:k0sha_vpn/features/profile/model/profile_entity.dart';
+import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:uuid/uuid.dart';
 
 /// parse profile subscription url and headers for data

@@ -1,4 +1,4 @@
-name: hiddify
+name: k0sha_vpn
 description: Cross Platform Multi Protocol Proxy Frontend.
 publish_to: "none"
 version: 2.2.0+20200
@@ -49,8 +49,8 @@ dependencies:
   url_launcher: ^6.2.5
   vclibs: ^0.1.2
   launch_at_startup: ^0.2.2
-  sentry_flutter: ^7.16.1
-  sentry_dart_plugin: ^1.7.1
+  sentry_flutter: ^8.13.2
+  sentry_dart_plugin: ^2.4.1
   combine: ^0.5.7
   path: ^1.8.3
   loggy: ^2.0.3

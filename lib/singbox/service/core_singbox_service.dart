@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:grpc/grpc.dart';
-import 'package:hiddify/singbox/generated/core.pbgrpc.dart';
-import 'package:hiddify/singbox/service/singbox_service.dart';
+import 'package:k0sha_vpn/singbox/generated/core.pbgrpc.dart';
+import 'package:k0sha_vpn/singbox/service/singbox_service.dart';
 
 abstract class CoreSingboxService extends CoreServiceClient
     implements SingboxService {

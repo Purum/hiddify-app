@@ -48,7 +48,7 @@
             "program": "lib/main.dart",
             "args": [
                 "--app-id",
-                "app.hiddify.com"
+                "com.k0sha.vpn"
             ],
             "deviceId": "designed-for-ipad",
         }

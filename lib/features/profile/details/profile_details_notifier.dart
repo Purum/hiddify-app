@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:dartx/dartx.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:hiddify/features/profile/data/profile_data_providers.dart';
-import 'package:hiddify/features/profile/data/profile_repository.dart';
-import 'package:hiddify/features/profile/details/profile_details_state.dart';
-import 'package:hiddify/features/profile/model/profile_entity.dart';
-import 'package:hiddify/features/profile/model/profile_failure.dart';
-import 'package:hiddify/utils/utils.dart';
+import 'package:k0sha_vpn/features/profile/data/profile_data_providers.dart';
+import 'package:k0sha_vpn/features/profile/data/profile_repository.dart';
+import 'package:k0sha_vpn/features/profile/details/profile_details_state.dart';
+import 'package:k0sha_vpn/features/profile/model/profile_entity.dart';
+import 'package:k0sha_vpn/features/profile/model/profile_failure.dart';
+import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 

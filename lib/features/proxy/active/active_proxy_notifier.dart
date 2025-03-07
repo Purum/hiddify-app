@@ -1,16 +1,16 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:hiddify/core/haptic/haptic_service.dart';
-import 'package:hiddify/core/preferences/general_preferences.dart';
-import 'package:hiddify/core/utils/throttler.dart';
-import 'package:hiddify/features/connection/notifier/connection_notifier.dart';
-import 'package:hiddify/features/proxy/data/proxy_data_providers.dart';
-import 'package:hiddify/features/proxy/model/ip_info_entity.dart';
-import 'package:hiddify/features/proxy/model/proxy_entity.dart';
-import 'package:hiddify/features/proxy/model/proxy_failure.dart';
-import 'package:hiddify/utils/riverpod_utils.dart';
-import 'package:hiddify/utils/utils.dart';
+import 'package:k0sha_vpn/core/haptic/haptic_service.dart';
+import 'package:k0sha_vpn/core/preferences/general_preferences.dart';
+import 'package:k0sha_vpn/core/utils/throttler.dart';
+import 'package:k0sha_vpn/features/connection/notifier/connection_notifier.dart';
+import 'package:k0sha_vpn/features/proxy/data/proxy_data_providers.dart';
+import 'package:k0sha_vpn/features/proxy/model/ip_info_entity.dart';
+import 'package:k0sha_vpn/features/proxy/model/proxy_entity.dart';
+import 'package:k0sha_vpn/features/proxy/model/proxy_failure.dart';
+import 'package:k0sha_vpn/utils/riverpod_utils.dart';
+import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'active_proxy_notifier.g.dart';

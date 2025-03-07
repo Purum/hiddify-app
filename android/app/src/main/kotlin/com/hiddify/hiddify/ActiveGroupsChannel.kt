@@ -14,7 +14,7 @@ class ActiveGroupsChannel(private val scope: CoroutineScope) : FlutterPlugin,
     CommandClient.Handler {
     companion object {
         const val TAG = "A/ActiveGroupsChannel"
-        const val CHANNEL = "com.hiddify.app/active-groups"
+        const val CHANNEL = "com.k0sha.vpn-service/active-groups"
         val gson = Gson()
     }
 

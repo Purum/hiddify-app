@@ -1,12 +1,12 @@
 // import 'package:dartx/dartx.dart';
 // import 'package:flutter/material.dart';
-// import 'package:hiddify/core/localization/translations.dart';
-// import 'package:hiddify/core/model/failures.dart';
-// import 'package:hiddify/core/widget/adaptive_icon.dart';
-// import 'package:hiddify/features/geo_asset/model/geo_asset_entity.dart';
-// import 'package:hiddify/features/geo_asset/model/geo_asset_failure.dart';
-// import 'package:hiddify/features/geo_asset/notifier/geo_asset_notifier.dart';
-// import 'package:hiddify/utils/utils.dart';
+// import 'package:k0sha_vpn/core/localization/translations.dart';
+// import 'package:k0sha_vpn/core/model/failures.dart';
+// import 'package:k0sha_vpn/core/widget/adaptive_icon.dart';
+// import 'package:k0sha_vpn/features/geo_asset/model/geo_asset_entity.dart';
+// import 'package:k0sha_vpn/features/geo_asset/model/geo_asset_failure.dart';
+// import 'package:k0sha_vpn/features/geo_asset/notifier/geo_asset_notifier.dart';
+// import 'package:k0sha_vpn/utils/utils.dart';
 // import 'package:hooks_riverpod/hooks_riverpod.dart';
 // import 'package:humanizer/humanizer.dart';
 

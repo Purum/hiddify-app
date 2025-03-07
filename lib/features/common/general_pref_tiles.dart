@@ -1,13 +1,13 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:hiddify/core/analytics/analytics_controller.dart';
-import 'package:hiddify/core/localization/locale_extensions.dart';
-import 'package:hiddify/core/localization/locale_preferences.dart';
-import 'package:hiddify/core/localization/translations.dart';
-import 'package:hiddify/core/model/region.dart';
-import 'package:hiddify/core/preferences/general_preferences.dart';
-import 'package:hiddify/features/config_option/data/config_option_repository.dart';
-import 'package:hiddify/features/config_option/notifier/config_option_notifier.dart';
+import 'package:k0sha_vpn/core/analytics/analytics_controller.dart';
+import 'package:k0sha_vpn/core/localization/locale_extensions.dart';
+import 'package:k0sha_vpn/core/localization/locale_preferences.dart';
+import 'package:k0sha_vpn/core/localization/translations.dart';
+import 'package:k0sha_vpn/core/model/region.dart';
+import 'package:k0sha_vpn/core/preferences/general_preferences.dart';
+import 'package:k0sha_vpn/features/config_option/data/config_option_repository.dart';
+import 'package:k0sha_vpn/features/config_option/notifier/config_option_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LocalePrefTile extends HookConsumerWidget {

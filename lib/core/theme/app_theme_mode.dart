@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hiddify/core/localization/translations.dart';
+import 'package:k0sha_vpn/core/localization/translations.dart';
 
 enum AppThemeMode {
   system,

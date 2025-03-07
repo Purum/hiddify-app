@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart';
-import 'package:hiddify/core/database/app_database.dart';
-import 'package:hiddify/core/database/tables/database_tables.dart';
-import 'package:hiddify/features/profile/model/profile_sort_enum.dart';
-import 'package:hiddify/utils/utils.dart';
+import 'package:k0sha_vpn/core/database/app_database.dart';
+import 'package:k0sha_vpn/core/database/tables/database_tables.dart';
+import 'package:k0sha_vpn/features/profile/model/profile_sort_enum.dart';
+import 'package:k0sha_vpn/utils/utils.dart';
 
 part 'profile_data_source.g.dart';
 
