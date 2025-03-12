@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.k0sha.vpn",
+      "sha256_cert_fingerprints":
+      [
+        "63:8B:44:88:EC:F8:28:59:06:11:18:13:0E:6D:65:25:A6:B7:BF:AE:C2:18:58:92:5E:33:25:E6:9C:13:AB:A7",
+        "B3:A5:0E:47:45:A7:EE:D4:22:A5:86:42:DD:B7:7C:48:A4:78:56:A0:51:CC:13:C0:51:41:4E:7E:40:5E:2D:92"
+      ]
+    }
+  }
+]

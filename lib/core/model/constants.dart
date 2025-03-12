@@ -1,19 +1,14 @@
 abstract class Constants {
-  static const appName = "Hiddify";
-  static const githubUrl = "https://github.com/hiddify/hiddify-next";
-  static const githubReleasesApiUrl =
-      "https://api.github.com/repos/hiddify/hiddify-next/releases";
-  static const githubLatestReleaseUrl =
-      "https://github.com/hiddify/hiddify-next/releases/latest";
-  static const appCastUrl =
-      "https://raw.githubusercontent.com/hiddify/hiddify-next/main/appcast.xml";
-  static const telegramChannelUrl = "https://t.me/hiddify";
-  static const privacyPolicyUrl = "https://hiddify.com/privacy-policy/";
-  static const termsAndConditionsUrl = "https://hiddify.com/terms/";
-  static const cfWarpPrivacyPolicy =
-      "https://www.cloudflare.com/application/privacypolicy/";
-  static const cfWarpTermsOfService =
-      "https://www.cloudflare.com/application/terms/";
+  static const appName = "k0sha VPN";
+  static const githubUrl = "https://github.com/Purum/hiddify-app.git";
+  static const githubReleasesApiUrl = "https://github.com/Purum/hiddify-app.git/releases";
+  static const githubLatestReleaseUrl = "https://github.com/Purum/hiddify-app.git/latest";
+  static const appCastUrl = "";
+  static const telegramChannelUrl = "https://t.me/k0shaVPN_bot";
+  static const privacyPolicyUrl = "https://k0sha.org/privacy.html";
+  static const termsAndConditionsUrl = "https://k0sha.org/privacy.html";
+  static const cfWarpPrivacyPolicy = "";
+  static const cfWarpTermsOfService = "";
 }
 
 const kAnimationDuration = Duration(milliseconds: 250);

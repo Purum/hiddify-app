@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,7 +35,6 @@
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		413270622C752158003A1E9B /* Libcore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 413270612C752158003A1E9B /* Libcore.xcframework */; };
-		413270632C752158003A1E9B /* Libcore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 413270612C752158003A1E9B /* Libcore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		68885DD72B4EF33400D214BA /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E392B72ADDA00E000ADF15 /* NetworkExtension.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		8F5E4CDB082D1FA427463933 /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAC414597550A10B89F4DC4 /* Pods_RunnerTests.framework */; };
@@ -74,17 +73,6 @@
 				03E392C02ADDA00F000ADF15 /* SingBoxPacketTunnel.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		075637B72B015816005AFB8E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				413270632C752158003A1E9B /* Libcore.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -413,7 +401,6 @@
 				03E392B22ADDA00E000ADF15 /* Sources */,
 				03E392B32ADDA00E000ADF15 /* Frameworks */,
 				03E392B42ADDA00E000ADF15 /* Resources */,
-				075637B72B015816005AFB8E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -972,6 +959,7 @@
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = armv7;
 				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "k0sha VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/build/ios/framework/$(CONFIGURATION)",
@@ -1195,6 +1183,7 @@
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = armv7;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "i386 arm64";
 				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "k0sha VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/build/ios/framework/$(CONFIGURATION)",
@@ -1242,6 +1231,7 @@
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = armv7;
 				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "k0sha VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/build/ios/framework/$(CONFIGURATION)",

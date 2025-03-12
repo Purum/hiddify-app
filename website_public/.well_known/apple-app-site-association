@@ -1,0 +1,24 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "NV36ASU785.com.k0sha.vpn"
+        ],
+        "paths": [
+          "sub"
+        ],
+        "components": [
+          {
+            "/": "/*"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "NV36ASU785.com.k0sha.vpn"
+    ]
+  }
+}
