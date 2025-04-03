@@ -34,14 +34,35 @@ class GeneralSettingTiles extends HookConsumerWidget {
             const AboutRoute().push(context);
           },
         ),
+        SwitchListTile(
+          title: Text(t.settings.general.autoIpCheck),
+          secondary: const Icon(FluentIcons.globe_search_24_regular),
+          value: ref.watch(Preferences.autoCheckIp),
+          onChanged: ref.read(Preferences.autoCheckIp.notifier).update,
+        ),
+        if (PlatformUtils.isDesktop) ...[
+          const ClosingPrefTile(),
+          SwitchListTile(
+            title: Text(t.settings.general.autoStart),
+            value: ref.watch(autoStartNotifierProvider).asData!.value,
+            onChanged: (value) async {
+              if (value) {
+                await ref.read(autoStartNotifierProvider.notifier).enable();
+              } else {
+                await ref.read(autoStartNotifierProvider.notifier).disable();
+              }
+            },
+          ),
+          SwitchListTile(
+            title: Text(t.settings.general.silentStart),
+            value: ref.watch(Preferences.silentStart),
+            onChanged: (value) async {
+              await ref.read(Preferences.silentStart.notifier).update(value);
+            },
+          ),
+        ],
         if (isPro) ...[
           const EnableAnalyticsPrefTile(),
-          SwitchListTile(
-            title: Text(t.settings.general.autoIpCheck),
-            secondary: const Icon(FluentIcons.globe_search_24_regular),
-            value: ref.watch(Preferences.autoCheckIp),
-            onChanged: ref.read(Preferences.autoCheckIp.notifier).update,
-          ),
           if (Platform.isAndroid) ...[
             SwitchListTile(
               title: Text(t.settings.general.dynamicNotification),
@@ -56,27 +77,6 @@ class GeneralSettingTiles extends HookConsumerWidget {
               secondary: const Icon(FluentIcons.phone_vibrate_24_regular),
               value: ref.watch(hapticServiceProvider),
               onChanged: ref.read(hapticServiceProvider.notifier).updatePreference,
-            ),
-          ],
-          if (PlatformUtils.isDesktop) ...[
-            const ClosingPrefTile(),
-            SwitchListTile(
-              title: Text(t.settings.general.autoStart),
-              value: ref.watch(autoStartNotifierProvider).asData!.value,
-              onChanged: (value) async {
-                if (value) {
-                  await ref.read(autoStartNotifierProvider.notifier).enable();
-                } else {
-                  await ref.read(autoStartNotifierProvider.notifier).disable();
-                }
-              },
-            ),
-            SwitchListTile(
-              title: Text(t.settings.general.silentStart),
-              value: ref.watch(Preferences.silentStart),
-              onChanged: (value) async {
-                await ref.read(Preferences.silentStart.notifier).update(value);
-              },
             ),
           ],
         ],

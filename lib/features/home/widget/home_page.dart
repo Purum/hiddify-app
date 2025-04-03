@@ -69,7 +69,7 @@ class HomePage extends HookConsumerWidget {
                                 ],
                               ),
                             ),
-                            if (MediaQuery.sizeOf(context).width < 840) const ActiveProxyFooter(),
+                            const ActiveProxyFooter(),
                           ],
                         ),
                       ),

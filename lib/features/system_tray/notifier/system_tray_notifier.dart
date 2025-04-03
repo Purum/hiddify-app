@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -40,10 +41,9 @@ class SystemTrayNotifier extends _$SystemTrayNotifier with AppLogger {
 
     var tooltip = Constants.appName;
     final serviceMode = ref.watch(ConfigOptions.serviceMode);
+    setIcon();
     if (connection == Disconnected()) {
-      setIcon(connection);
     } else if (newConnectionStatus) {
-      setIcon(const Connected());
       tooltip = "$tooltip - ${connection.present(t)}";
       if (newConnectionStatus) {
         tooltip = "$tooltip : ${delay}ms";
@@ -53,7 +53,6 @@ class SystemTrayNotifier extends _$SystemTrayNotifier with AppLogger {
       // else if (delay>1000)
       //   SystemTrayNotifier.setIcon(timeout ? Disconnecting() : Connecting());
     } else {
-      setIcon(const Disconnecting());
       tooltip = "$tooltip - ${connection.present(t)}";
     }
     if (Platform.isMacOS) {
@@ -143,50 +142,51 @@ class SystemTrayNotifier extends _$SystemTrayNotifier with AppLogger {
     await trayManager.setContextMenu(menu);
   }
 
-  static void setIcon(ConnectionStatus status) {
+  static void setIcon() {
     if (!PlatformUtils.isDesktop) return;
     trayManager
         .setIcon(
-          _trayIconPath(status),
-          isTemplate: Platform.isMacOS,
-        )
-        .asStream();
+          _trayIconPath(),
+        );
   }
 
-  static String _trayIconPath(ConnectionStatus status) {
+  static String _trayIconPath() {
     if (Platform.isWindows) {
-      final Brightness brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
-      final isDarkMode = brightness == Brightness.dark;
-      switch (status) {
-        case Connected():
-          return Assets.images.trayIconConnectedIco;
-        case Connecting():
-          return Assets.images.trayIconDisconnectedIco;
-        case Disconnecting():
-          return Assets.images.trayIconDisconnectedIco;
-        case Disconnected():
-          if (isDarkMode) {
-            return Assets.images.trayIconIco;
-          } else {
-            return Assets.images.trayIconDarkIco;
-          }
-      }
+      return Assets.images.trayIconIco;
+      // final Brightness brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
+      // final isDarkMode = brightness == Brightness.dark;
+      // switch (status) {
+      //   case Connected():
+      //     return Assets.images.trayIconConnectedIco;
+      //   case Connecting():
+      //     return Assets.images.trayIconDisconnectedIco;
+      //   case Disconnecting():
+      //     return Assets.images.trayIconDisconnectedIco;
+      //   case Disconnected():
+      //     if (isDarkMode) {
+      //       return Assets.images.trayIconIco;
+      //     } else {
+      //       return Assets.images.trayIconDarkIco;
+      //     }
+      // }
     }
-    final isDarkMode = false;
-    switch (status) {
-      case Connected():
-        return Assets.images.trayIconConnectedPng.path;
-      case Connecting():
-        return Assets.images.trayIconDisconnectedPng.path;
-      case Disconnecting():
-        return Assets.images.trayIconDisconnectedPng.path;
-      case Disconnected():
-        if (isDarkMode) {
-          return Assets.images.trayIconDarkPng.path;
-        } else {
-          return Assets.images.trayIconPng.path;
-        }
-    }
+    debugPrint(Assets.images.trayIconDarkPng.path);
+    return Assets.images.trayIconDarkPng.path;
+    // final isDarkMode = false;
+    // switch (status) {
+    //   case Connected():
+    //     return Assets.images.trayIconConnectedPng.path;
+    //   case Connecting():
+    //     return Assets.images.trayIconDisconnectedPng.path;
+    //   case Disconnecting():
+    //     return Assets.images.trayIconDisconnectedPng.path;
+    //   case Disconnected():
+    //     if (isDarkMode) {
+    //       return Assets.images.trayIconDarkPng.path;
+    //     } else {
+    //       return Assets.images.trayIconPng.path;
+    //     }
+    // }
     // return Assets.images.trayIconPng.path;
   }
 }

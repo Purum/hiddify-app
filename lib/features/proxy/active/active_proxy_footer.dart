@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:k0sha_vpn/core/localization/translations.dart';
 import 'package:k0sha_vpn/core/widget/animated_visibility.dart';
 import 'package:k0sha_vpn/core/widget/shimmer_skeleton.dart';
+import 'package:k0sha_vpn/features/connection/notifier/connection_notifier.dart';
 import 'package:k0sha_vpn/features/proxy/active/active_proxy_notifier.dart';
 import 'package:k0sha_vpn/features/proxy/active/ip_widget.dart';
 import 'package:k0sha_vpn/features/proxy/model/proxy_failure.dart';
@@ -13,6 +14,8 @@ import 'package:k0sha_vpn/gen/fonts.gen.dart';
 import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../stats/notifier/uptime_notifier.dart';
+
 class ActiveProxyFooter extends HookConsumerWidget {
   const ActiveProxyFooter({super.key});
 
@@ -20,7 +23,8 @@ class ActiveProxyFooter extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final t = ref.watch(translationsProvider);
     final activeProxy = ref.watch(activeProxyNotifierProvider);
-    final ipInfo = ref.watch(ipInfoNotifierProvider);
+    final stats = ref.watch(statsNotifierProvider).value;
+    final uptime = ref.watch(uptimeNotifierProvider);
 
     return AnimatedVisibility(
       axis: Axis.vertical,
@@ -43,103 +47,40 @@ class ActiveProxyFooter extends HookConsumerWidget {
                         semanticLabel: t.proxies.activeProxySemanticLabel,
                       ),
                       const Gap(8),
-                      switch (ipInfo) {
-                        AsyncData(value: final info) => Row(
-                            children: [
-                              IPCountryFlag(countryCode: info.countryCode),
-                              const Gap(8),
-                              IPText(
-                                ip: info.ip,
-                                onLongPress: () async {
-                                  ref
-                                      .read(ipInfoNotifierProvider.notifier)
-                                      .refresh();
-                                },
-                              ),
-                            ],
-                          ),
-                        AsyncError(error: final UnknownIp _) => Row(
-                            children: [
-                              const Icon(FluentIcons.arrow_sync_20_regular),
-                              const Gap(8),
-                              UnknownIPText(
-                                text: t.proxies.checkIp,
-                                onTap: () async {
-                                  ref
-                                      .read(ipInfoNotifierProvider.notifier)
-                                      .refresh();
-                                },
-                              ),
-                            ],
-                          ),
-                        AsyncError() => Row(
-                            children: [
-                              const Icon(FluentIcons.error_circle_20_regular),
-                              const Gap(8),
-                              UnknownIPText(
-                                text: t.proxies.unknownIp,
-                                onTap: () async {
-                                  ref
-                                      .read(ipInfoNotifierProvider.notifier)
-                                      .refresh();
-                                },
-                              ),
-                            ],
-                          ),
-                        _ => const Row(
-                            children: [
-                              Icon(FluentIcons.question_circle_20_regular),
-                              Gap(8),
-                              Flexible(
-                                child: ShimmerSkeleton(
-                                  height: 16,
-                                  widthFactor: 1,
-                                ),
-                              ),
-                            ],
-                          ),
-                      },
+                      _InfoProp(
+                        icon: FluentIcons.clock_20_regular,
+                        text: uptime.getTime(),
+                        semanticLabel: t.proxies.activeProxySemanticLabel,
+                      ),
                     ],
                   ),
                 ),
-                const _StatsColumn(),
+                Directionality(
+                  textDirection: TextDirection.values[
+                  (Directionality.of(context).index + 1) % TextDirection.values.length],
+                  child: Flexible(
+                    child: Column(
+                      children: [
+                        _InfoProp(
+                          icon: FluentIcons.arrow_bidirectional_up_down_20_regular,
+                          text: (stats?.downlinkTotal ?? 0).size(),
+                          semanticLabel: t.stats.totalTransferred,
+                          ),
+                        const Gap(8),
+                        _InfoProp(
+                          icon: FluentIcons.arrow_download_20_regular,
+                          text: (stats?.downlink ?? 0).speed(),
+                          semanticLabel: t.stats.speed,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
         _ => const SizedBox(),
       },
-    );
-  }
-}
-
-class _StatsColumn extends HookConsumerWidget {
-  const _StatsColumn();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final t = ref.watch(translationsProvider);
-    final stats = ref.watch(statsNotifierProvider).value;
-
-    return Directionality(
-      textDirection: TextDirection.values[
-          (Directionality.of(context).index + 1) % TextDirection.values.length],
-      child: Flexible(
-        child: Column(
-          children: [
-            _InfoProp(
-              icon: FluentIcons.arrow_bidirectional_up_down_20_regular,
-              text: (stats?.downlinkTotal ?? 0).size(),
-              semanticLabel: t.stats.totalTransferred,
-            ),
-            const Gap(8),
-            _InfoProp(
-              icon: FluentIcons.arrow_download_20_regular,
-              text: (stats?.downlink ?? 0).speed(),
-              semanticLabel: t.stats.speed,
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

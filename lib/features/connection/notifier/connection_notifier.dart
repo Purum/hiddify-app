@@ -7,6 +7,7 @@ import 'package:k0sha_vpn/features/connection/data/connection_repository.dart';
 import 'package:k0sha_vpn/features/connection/model/connection_status.dart';
 import 'package:k0sha_vpn/features/profile/model/profile_entity.dart';
 import 'package:k0sha_vpn/features/profile/notifier/active_profile_notifier.dart';
+import 'package:k0sha_vpn/features/stats/notifier/uptime_notifier.dart';
 import 'package:k0sha_vpn/utils/utils.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -146,6 +147,7 @@ class ConnectionNotifier extends _$ConnectionNotifier with AppLogger {
       await ref.read(Preferences.startedByUser.notifier).update(false);
       state = AsyncError(err, StackTrace.current);
     }).run();
+    ref.read(uptimeNotifierProvider.notifier).start();
   }
 
   Future<void> _disconnect() async {
@@ -153,6 +155,7 @@ class ConnectionNotifier extends _$ConnectionNotifier with AppLogger {
       loggy.warning("error disconnecting", err);
       state = AsyncError(err, StackTrace.current);
     }).run();
+    ref.read(uptimeNotifierProvider.notifier).stop();
   }
 }
 

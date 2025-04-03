@@ -97,19 +97,19 @@ class SingboxNativeLibrary {
       ffi.Pointer<ffi.Char> Function(
           ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
 
-  ffi.Pointer<ffi.Char> changeConfigOptions(
+  ffi.Pointer<ffi.Char> changeHiddifyOptions(
     ffi.Pointer<ffi.Char> configOptionsJson,
   ) {
-    return _changeConfigOptions(
+    return _changeHiddifyOptions(
       configOptionsJson,
     );
   }
 
-  late final _changeConfigOptionsPtr = _lookup<
+  late final _changeHiddifyOptionsPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>)>>('changeConfigOptions');
-  late final _changeConfigOptions = _changeConfigOptionsPtr
+              ffi.Pointer<ffi.Char>)>>('changeHiddifyOptions');
+  late final _changeHiddifyOptions = _changeHiddifyOptionsPtr
       .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
   ffi.Pointer<ffi.Char> generateConfig(
